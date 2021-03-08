@@ -75,7 +75,7 @@ public class ListTest {
 //			if(cs instanceof java.util.ArrayList<String>){}
 			
 			/**
-			 *  List 中正常删除元素的正确方法
+			 *  List 中正常删除元素的正确方法 <<<<<<<<<<<<<<<<<<<<<
 			 * */
 			
 //			 /**

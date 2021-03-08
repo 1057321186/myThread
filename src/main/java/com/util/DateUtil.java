@@ -9,31 +9,57 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DateUtil {
     public static final String DATETIME_FOMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String Mill_DATETIME_FORMAT_4_MONITOR = "yyyyMMdd HH:mm:ss";
     public static  String formatDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat(DATETIME_FOMAT);
         return sdf.format(date);
     }
 
-    public static void main(String[] args) {
-        System.out.println(formatDate(new Date(1609840000L)));
-
-        Map map = new HashMap();
-        map.put("a","1");
-        map.put("b","2");
-        map.put("v","3");
-        System.out.println(JSONObject.toJSONString(map));
-
-
-        String s = regInageToBase64String("http://10.10.1.200:8889/group1/M00/00/00/rBsAB16Fj-GAGsD7AAEsjxA4zGo437.jpg");
-        System.out.println(s);
+    public static Date parse(String time){
+        SimpleDateFormat sdf = new SimpleDateFormat(Mill_DATETIME_FORMAT_4_MONITOR);
+        Date date = null;
+        try {
+            date = sdf.parse(time);
+        } catch (Exception e) {
+            System.out.println("日期转换异常");
+        }
+        System.out.println(date);
+        return date;
     }
 
+    public static void main(String[] args) {
+
+        parse("20210303 17:54:05");
+//        System.out.println(formatDate(new Date(1609840000L)));
+//
+//        Map map = new HashMap();
+//        map.put("a","1");
+//        map.put("b","2");
+//        map.put("v","3");
+//        System.out.println(JSONObject.toJSONString(map));
+//
+//
+//        String s = regInageToBase64String("http://10.10.1.200:8889/group1/M00/00/00/rBsAB16Fj-GAGsD7AAEsjxA4zGo437.jpg");
+//        System.out.println(s);
+//        Date monthDateAfter = getMonthDateAfter(new Date(), 1);
+//        String s = formatDate(monthDateAfter);
+//        System.out.println(s);
+    }
+
+    public static Date getMonthDateAfter(Date startDate,Integer number) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startDate);
+        calendar.add(Calendar.MONTH,number);
+        Date date = calendar.getTime();
+        return date;
+    }
     /**
      *
      * @param imgUrl
