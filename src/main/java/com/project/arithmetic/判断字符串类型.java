@@ -14,7 +14,7 @@ public class 判断字符串类型 {
 			   num++;
 		   }else if(Character.isLetter(x[i])){
 			   chartra++;
-		   }else if(Character.isSpace(x[i])){
+		   }else if(Character.isSpaceChar(x[i])){
 			   blak++;
 		   }
 		   else{

@@ -17,7 +17,7 @@ public class FileClass {
 			//file.delete();
 			//System.out.print("文件被删除");
 			/***********获取文件的信息***********/
-			String name = file.getName();		//获取文件名字
+			String name = file.getName();		//获取文 件名字
 			long length = file.length();	//获取文件长度
 			boolean ifhidden=file.isHidden();	//判断是否为隐藏文件
 			boolean ifDirectory = file.isDirectory();	//判断是否为一个文件夹
