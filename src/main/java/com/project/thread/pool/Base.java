@@ -4,6 +4,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * 提高响应速度（减少了创建线程的时间）
+ * 降低资源消耗
+ * 便于管理
+ *
+ * ExecutorService: 真正的线程池接口，常见子类，ThreadPoolExecutors
+ *
+ *
+ *
  *  FixedThreadPool：线程数固定的线程池；
  *  CachedThreadPool：线程数根据任务动态调整的线程池；
  *  SingleThreadExecutor：仅单线程执行的线程池

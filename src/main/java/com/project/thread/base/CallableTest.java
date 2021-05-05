@@ -9,6 +9,8 @@ import java.util.concurrent.*;
  * 	3、使用 FutureTask 对象作为 Thread 对象的 target 创建并启动新线程。
  * 	4、调用 FutureTask 对象的 get() 方法来获得子线程执行结束后的返回值。
  *
+ *  优点：可以获取返回值
+ *      可以抛出异常
  */
 public class CallableTest implements Callable {
 
@@ -22,18 +24,23 @@ public class CallableTest implements Callable {
     }
 
     public static void main(String[] args) {
-
+        // 创建实例
         CallableTest callableTest=new CallableTest();
+        // 创建执行服务
         ExecutorService  exe = Executors.newCachedThreadPool();
+        // 提交执行
         Future submit = exe.submit(callableTest);
         try {
-                System.out.println(submit.get());
-
+            // 获取结果
+            System.out.println(submit.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+        // 关闭服务
+        exe.shutdown();
 
 //        FutureTask<Integer> futureTask = new FutureTask<>(callableTest);
 //        for(int i = 0;i < 100;i++)  {
